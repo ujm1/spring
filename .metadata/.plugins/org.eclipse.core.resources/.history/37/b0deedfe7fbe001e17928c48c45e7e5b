@@ -1,0 +1,5 @@
+package com.oracle.test.controller;
+
+public class HelloController {
+
+}

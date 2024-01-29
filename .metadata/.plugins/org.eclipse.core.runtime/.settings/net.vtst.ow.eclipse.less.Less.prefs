@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.AT_KEYWORD.color=255,61,131
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.COMMENT.color=130,116,102
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.DEFAULT.color=249,249,245
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.MEDIA_FEATURE.color=255,61,131
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.MEDIA_QUERY_KEYWORD.color=255,61,131
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.MIXIN_CALL.color=113,225,241
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.NUMERIC_LITERAL.color=191,154,249
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.PROPERTY.color=249,249,245
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.SELECTOR.color=113,225,241
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.SELECTOR_CLASS.color=113,225,241
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.SELECTOR_HASH.color=113,225,241
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.SELECTOR_ROOT.color=113,225,241
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.STRING.color=235,223,145
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.VARIABLE_DEFINITION.color=249,249,245
+net.vtst.ow.eclipse.less.Less.syntaxColorer.tokenStyles.VARIABLE_USE.color=255,165,66
