@@ -18,3 +18,5 @@ tagAttributeValue=\#EBDF91 | null | false | false | false | false
 tagBorder=\#FFA542 | null | false | false | false | false
 tagName=\#F9F9F5 | null | false | false | false | false
 xmlContent=\#F9F9F5 | null | null | null | null | null
+xml_content_assist_default_page_sort_order=org.eclipse.wst.xml.ui.proposalCategory.xmlTags\u0000org.eclipse.wst.xml.ui.proposalCategory.xmlTemplates\u0000
+xml_content_assist_own_page_sort_order=org.eclipse.wst.xml.ui.proposalCategory.xmlTemplates\u0000org.eclipse.wst.xml.ui.proposalCategory.xmlTags\u0000

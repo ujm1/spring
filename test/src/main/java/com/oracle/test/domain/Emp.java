@@ -1,0 +1,22 @@
+package com.oracle.test.domain;
+
+public class Emp {
+	private String empno; // 그냥 임의로.
+	private String ename;
+
+	public String getEmpno() {
+		return empno;
+	}
+
+	public void setEmpno(String empno) {
+		this.empno = empno;
+	}
+
+	public String getEname() {
+		return ename;
+	}
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+}

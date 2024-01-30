@@ -1,5 +1,5 @@
 autoProposeCode=<\= .qwertyuiopasdfghjklzxcvbnm
-autoProposeDelay=0
+autoProposeDelay=5
 commentBorder=\#827466 | null | false | false | false | false
 commentText=\#827466 | null | false | false | false | false
 declBoder=\#71E1F1 | null | false | false | false | false
