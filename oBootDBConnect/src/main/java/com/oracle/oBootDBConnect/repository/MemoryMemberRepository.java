@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 import com.oracle.oBootDBConnect.domain.Member1;
 
-@Repository
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
 	private static Map<Long, Member1> store = new HashMap<>();
 	private static long sequence = 0L;
@@ -23,7 +23,13 @@ public class MemoryMemberRepository implements MemberRepository {
 	@Override
 	public List<Member1> findAll() {
 		System.out.println("MemoryMemberRepository findAll start...");
-		return new ArrayList<>(store.values());
+		
+		List<Member1> listMember=new ArrayList<>(store.values());
+		System.out.println("MemoryMemberRepository findAll aListMember...");
+		return listMember;
+		
+		//return new ArrayList<>(store.values());
+		//저 3줄을 이 한 줄로 바꿀 수 있다.
 	}
 
 }

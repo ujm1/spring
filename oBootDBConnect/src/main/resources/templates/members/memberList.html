@@ -15,7 +15,7 @@
 						<th>이름</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody>		<!-- jsp의 forEach같다. -->
 					<tr th:each="member:${members}">
 						<td th:text="${member.id}"></td>
 						<td th:text="${member.name}"></td>
