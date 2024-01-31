@@ -19,8 +19,8 @@ public class SpringConfig {
 	
 	@Bean
 	public MemberRepository memberRepository() {
-//		return new JdbcMemberRepository(dataSource); //이걸로 하면 db로 
-		return new MemoryMemberRepository(); //이걸로 하면 메모리로
+		return new JdbcMemberRepository(dataSource); //이걸로 하면 db로 
+//		return new MemoryMemberRepository(); //이걸로 하면 메모리로
 	}
 	
 	

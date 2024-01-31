@@ -33,10 +33,12 @@ public class JdbcMemberRepository implements MemberRepository {
 	@Override	//저장, 즉 추가
 	public Member1 save(Member1 member1) {
 		String sql = "insert into member7(id,name) values(member7_seq.nextval,?)";
-		System.out.println("JdbcMemberReppository sql->" + sql);
+		System.out.println("JdbcMemberRepository sql->" + sql);
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
+	
 
 		try {
 			conn = getConnection();

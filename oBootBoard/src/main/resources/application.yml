@@ -3,14 +3,14 @@ server:
   
  # Oracle Connect
 spring:
-datasource:
-  driver-class-name: oracle.jdbc.driver.OracleDriver
-  url: jdbc:oracle:thin:@localhost:1521/xe
-  username: scott
-  passwod: tiger
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: scott
+    password: tiger
 
 # view Resolver
-mvc:
-  view:
-    prefix: /WEB-INF/views/
-    suffix: /.jsp
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
