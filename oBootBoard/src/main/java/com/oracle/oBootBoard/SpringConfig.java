@@ -18,6 +18,5 @@ public class SpringConfig {
 	@Bean
 	public BDao jdbcDao() {
 		return new JdbcDao(dataSource);
-		//return new MemoryMemberRepository();
 	}
 }
