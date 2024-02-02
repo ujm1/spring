@@ -1,6 +1,6 @@
 package com.oracle.oBootBoard.command;
 
-import java.sql.PreparedStatement;
+
 import java.util.ArrayList;
 import java.util.Map;
 

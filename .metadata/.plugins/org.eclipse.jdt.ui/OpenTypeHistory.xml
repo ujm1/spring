@@ -2,4 +2,6 @@
 <typeInfoHistroy>
     <typeInfo handle="=oBootDBConnect/C:\/Users\/admin\/.gradle\/caches\/modules-2\/files-2.1\/net.bytebuddy\/byte-buddy\/1.14.11\/725602eb7c8c56b51b9c21f273f9df5c909d9e7d\/byte-buddy-1.14.11.jar=/gradle_used_by_scope=/test=/=/test=/true=/&lt;net.bytebuddy.description(ByteCodeElement$Member.class[Member" modifiers="1545" timestamp="1706593291971"/>
     <typeInfo handle="=oBootDBConnect/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.oracle.oBootDBConnect.repository{MemberRepository.java[MemberRepository" modifiers="513" timestamp="1706595253793"/>
+    <typeInfo handle="=oBootJpa01/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.oracle.oBootJpa01.repository{MemberRepository.java[MemberRepository" modifiers="513" timestamp="1706854364468"/>
+    <typeInfo handle="=oBootJpa01/C:\/Users\/admin\/.gradle\/caches\/modules-2\/files-2.1\/org.mockito\/mockito-core\/5.7.0\/a1c258331ab91d66863c983aff7136357e9de056\/mockito-core-5.7.0.jar=/gradle_used_by_scope=/test=/=/test=/true=/&lt;org.mockito.plugins(MemberAccessor.class[MemberAccessor" modifiers="1537" timestamp="1706593291955"/>
 </typeInfoHistroy>
