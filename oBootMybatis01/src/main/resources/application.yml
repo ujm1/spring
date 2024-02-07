@@ -1,0 +1,38 @@
+server:
+  port: 8387
+  
+ # Oracle Connect
+spring:
+
+  #File size
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: scott
+    password: tiger
+
+# jpa setting
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging.level:
+  org.hibernate.SQL: debug
+  
+  mvc:
+    view:
+      prefix: /WEB_INF/views/
+      suffix: .jsp
+      
+mybatis:
+  config-location: classpath:configuration.xml
+  mapper-locations: classpath:mappers/*.xml
+  

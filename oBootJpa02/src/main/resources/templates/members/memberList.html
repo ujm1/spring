@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaft.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원 조회</h1>
+	<h1>JPA2 회원 조회</h1>
 	<div class="nav">
 		<form action="/members/search" method="post">
 			회원검색이름 : <input type="text" name="name" placeholder="회원검색 이름을 입력하세요">
 			<button type="submit">검색</button>
-			<br>
+			<p>
 		</form>
 		<div class="container">
 			<div>
@@ -23,7 +23,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="member:${members}">
+						<tr th:each="member : ${members}">
 							<td th:text="${member.id}"></td>
 							<td><a th:href="@{/memberModifyForm(id=${member.id})}"
 								th:text="${member.name}"></a></td>
@@ -33,6 +33,11 @@
 				</table>
 			</div>
 		</div>
-		<a href="/members/new">Member 신규 생성</a><br>
+		<!-- /container -->
+		<a href="/members/new">Member 신규 생성</a>
+		<p>
+	</div>
+
+
 </body>
 </html>

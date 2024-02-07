@@ -4,5 +4,6 @@
     <typeInfo handle="=oBootDBConnect/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.oracle.oBootDBConnect.repository{MemberRepository.java[MemberRepository" modifiers="513" timestamp="1706595253793"/>
     <typeInfo handle="=oBootJpa01/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.oracle.oBootJpa01.repository{MemberRepository.java[MemberRepository" modifiers="513" timestamp="1706854364468"/>
     <typeInfo handle="=oBootJpa01/C:\/Users\/admin\/.gradle\/caches\/modules-2\/files-2.1\/org.mockito\/mockito-core\/5.7.0\/a1c258331ab91d66863c983aff7136357e9de056\/mockito-core-5.7.0.jar=/gradle_used_by_scope=/test=/=/test=/true=/&lt;org.mockito.plugins(MemberAccessor.class[MemberAccessor" modifiers="1537" timestamp="1706593291955"/>
-    <typeInfo handle="=oBootJpa02/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.oracle.oBootJpa02.repository{MemberRepository.java[MemberRepository" modifiers="513" timestamp="1707116145500"/>
+    <typeInfo handle="=oBootJpa02/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.oracle.oBootJpa02.repository{MemberRepository.java[MemberRepository" modifiers="513" timestamp="1707178757681"/>
+    <typeInfo handle="=oBootJpaApi01/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.oracle.oBootJpaApi01.repository{MemberRepository.java[MemberRepository" modifiers="513" timestamp="1707273832416"/>
 </typeInfoHistroy>
