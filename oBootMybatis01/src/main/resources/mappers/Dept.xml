@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.oBootMybatis01.DeptMapper">
+	<select id="tkSelectDept" resultType="Dept"> 
+	<!--원랜 Dept로 썼는데 오류나서, configuration.xml에 써있는걸 가져옴
+	com.oracle.oBootMybatis01.model.Dept
+	또는 configuration.xml에서 alias 등록해서.. Dept로 다시 -->
+		select * from dept
+	</select>
+</mapper>

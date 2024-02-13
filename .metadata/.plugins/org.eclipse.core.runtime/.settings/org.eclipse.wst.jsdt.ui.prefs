@@ -1,4 +1,3 @@
-closeBraces=false
 eclipse.preferences.version=1
 fontPropagated=true
 java_bracket=249,249,245
@@ -40,6 +39,7 @@ semanticHighlighting.methodDeclarationName.enabled=true
 semanticHighlighting.methodDeclarationName.italic=false
 semanticHighlighting.methodDeclarationName.strikethrough=false
 semanticHighlighting.methodDeclarationName.underline=false
+smart_opening_brace=true
 smart_semicolon=true
 tabWidthPropagated=true
 tagName=113,225,241
