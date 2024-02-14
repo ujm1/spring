@@ -8,7 +8,7 @@ public class EmpDept {
 	//EMp용
 	private int empno;	private String ename;
 	private String job;	private int mgr;
-	private String hiredate;	private int sa;
+	private String hiredate;	private int sal;
 	private int comm;	private int deptno;
 	
 	//Dept용 (많다는 가정)

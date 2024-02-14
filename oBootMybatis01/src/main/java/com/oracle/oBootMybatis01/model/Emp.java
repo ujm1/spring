@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class Emp {
 	private int empno;
-	@NotEmpty
+	@NotEmpty(message = "이름은 필수 입니다 흑유흑유")
 	private String ename;
 	private String job;		 	
 	private int mgr;
@@ -21,5 +21,7 @@ public class Emp {
 	private int start; 		 	   private int end;
 	// Page 정보
 	private String currentPage;
+	
+	
 
 }

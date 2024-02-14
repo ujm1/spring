@@ -21,13 +21,28 @@ spring:
     show-sql: true
     # Operation --> create / none / update
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+      #Member3 테이블을 쓸건데 아직 안만들어졌을때 create로 바꾸고 저장, 실행
       
    # view Resolver
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp           
+
+#  메일 전송
+  mail:
+    host: smtp.gmail.com
+    port: 587 
+#    587 고정값?
+    username: woakswoaks@gmail.com
+    password: nnbe klao hucq jdcj
+   #2차비밀번호..즉 '기기용 앱 비밀번호'로 해야한다. 
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
 
 # Mybatis
 mybatis:

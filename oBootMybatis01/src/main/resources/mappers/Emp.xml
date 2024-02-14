@@ -7,6 +7,7 @@
 	</select>
 
 	<select id="tkEmpListAll" parameterType="Emp" resultType="Emp">
+		<![CDATA[
 		SELECT
 		*
 		FROM
@@ -14,6 +15,22 @@
 		SELECT rownum rn , a.*
 		FROM
 		(select * from emp order by empno) a
+		)
+		WHERE rn >= #{start} 
+		and rn<=#{end} 
+		]]> <!-- 아래와 똑같으나.. < > 이걸 태그로 인식해서 인식되지 않음. 그래서 cdata 저걸로 감싸줘야함. 이걸 쓸거면.. -->
+	</select>
+
+	<!-- 오리지널, 백업용 -->
+	<select id="tkEmpListAll3" parameterType="Emp" resultType="Emp">
+		SELECT
+		*
+		FROM
+		(
+		SELECT rownum rn , a.*
+		FROM
+		(select * from emp order by
+		empno) a
 		)
 		WHERE rn BETWEEN #{start} and #{end}
 	</select>
@@ -38,47 +55,59 @@
 	</select>
 
 	<insert id="insertEmp" parameterType="Emp">
-		insert into emp values
-		(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm},
-		#{deptno})
+		insert into emp values ( #{empno}, #{ename}, #{job}, #{mgr},
+		#{hiredate}, #{sal}, #{comm}, #{deptno} )
 	</insert>
+
+	<delete id="deleteEmp" parameterType="int">
+		delete from emp where empno=#{empno}
+	</delete>
+
+
 
 	<select id="tkEmpSearchList3" parameterType="Emp"
 		resultType="Emp">
 		SELECT *
 		FROM
 		(
-		SELECT rownum rn, a.*
+		SELECT rownum rn , a.*
 		FROM
-		(select * from emp order by empno) a
-		)
-		WHERE rn BETWEEN #{start} and #{end}
-		<choose>
-			<when test="search == 's_job'"> <!-- 직업검색 -->
-				AND job like '%' || #{keyword} || '%'
-			</when>
-			<when test="search == 's_ename'"> <!-- 닉네임검색 -->
-				AND ename like '%' || #{keyword} || '%'
-			</when>
-			<otherwise>
-				AND job like '%'
-			</otherwise>
-		</choose>
-	</select>
+		(select * from emp
 
-	<select id="conKdEmpTotal" parameterType="Emp" resultType="int">
-		SELECT Count(*) FROM emp
 		<choose>
-			<when test="search == 's_job'"> <!-- 직업검색 -->
-				AND job like '%' || #{keyword} || '%'
+			<when test="search == 's_job'">
+				WHERE job like '%' || #{keyword} || '%'
 			</when>
-			<when test="search == 's_ename'"> <!-- 닉네임검색 -->
-				AND ename like '%' || #{keyword} || '%'
+			<when test="search == 's_ename'">
+				WHERE ename like '%' || #{keyword} || '%'
 			</when>
 			<otherwise>
 				WHERE job like '%'
 			</otherwise>
 		</choose>
+
+		order by empno
+		) a
+		)
+		WHERE rn BETWEEN #{start} and #{end}
+
+
+	</select>
+
+	<select id="condEmpTotal" parameterType="Emp" resultType="int">
+		SELECT Count(*) FROM emp
+		<choose>
+			<when test="search == 's_job'">
+				WHERE job like '%' || #{keyword} || '%'
+			</when>
+			<when test="search == 's_ename'">
+				WHERE ename like '%' || #{keyword} || '%'
+			</when>
+			<otherwise>
+				WHERE job like '%'
+			</otherwise>
+		</choose>
+
 	</select>
 
 </mapper>
