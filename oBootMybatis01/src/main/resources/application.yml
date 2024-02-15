@@ -22,7 +22,7 @@ spring:
     # Operation --> create / none / update
     hibernate:
       ddl-auto: update
-      #Member3 테이블을 쓸건데 아직 안만들어졌을때 create로 바꾸고 저장, 실행
+      #Member3 테이블을 쓸건데 아직 안만들어졌을때 create로 바꾸고 저장, 실행. 운영단계에선 none으로
       
    # view Resolver
   mvc:

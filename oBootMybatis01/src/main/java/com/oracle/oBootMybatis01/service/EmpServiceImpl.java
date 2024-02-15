@@ -11,6 +11,7 @@ import com.oracle.oBootMybatis01.model.Dept;
 import com.oracle.oBootMybatis01.model.DeptVO;
 import com.oracle.oBootMybatis01.model.Emp;
 import com.oracle.oBootMybatis01.model.EmpDept;
+import com.oracle.oBootMybatis01.model.Member1;
 
 import lombok.RequiredArgsConstructor;
 
@@ -141,5 +142,19 @@ public class EmpServiceImpl implements EmpService {
 		System.out.println("EmpServiceImpl selListDept Start...");
 		dd.selListDept(map);
 		
+	}
+
+
+	@Override
+	public int memCount(String id) {
+		System.out.println("EmpServiceImpl memCount id=>"+id);
+		return md.memCount(id);
+	}
+
+
+	@Override
+	public List<Member1> listMem(Member1 member1) {
+		System.out.println("EmpServiceImpl listMem Start...");
+		return md.listMem(member1);
 	}
 }
