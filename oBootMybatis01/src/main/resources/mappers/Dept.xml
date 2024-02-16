@@ -10,20 +10,20 @@
 		<result property="loc" column="loc" />
 	</resultMap>
 
-	<select id="tkSelectDept" resultType="Dept">
-		<!--원랜 Dept로 썼는데 오류나서, configuration.xml에 써있는걸 가져옴 com.oracle.oBootMybatis01.model.Dept 
-			또는 configuration.xml에서 alias 등록해서.. Dept로 다시 -->
-		select * from dept
-	</select>
+		<select id="tkSelectDept" resultType="Dept">
+			<!--원랜 Dept로 썼는데 오류나서, configuration.xml에 써있는걸 가져옴 com.oracle.oBootMybatis01.model.Dept 
+				또는 configuration.xml에서 alias 등록해서.. Dept로 다시 -->
+			select * from dept
+		</select>
 
 
  <!-- 웹 통한 테이블넣기 -->
 	<select id="procDeptInsert" parameterType="DeptVO"
 		statementType="CALLABLE">
 		{<!-- 이 중괄호는 안넣어도 되나 여기선 fm -->
-		call Dept_Insert3(											<!-- 호출 -->
+		call Dept_insert3(<!-- 호출 -->
 		#{deptno, mode=IN, jdbcType=INTEGER}
-		#{dname, mode=IN, jdbcType=VARCHAR}
+		,#{dname, mode=IN, jdbcType=VARCHAR}
 		,#{loc, mode=IN, jdbcType=VARCHAR}
 		,#{odeptno,mode=OUT, jdbcType=INTEGER}
 		,#{odname, mode=OUT, jdbcType=VARCHAR}

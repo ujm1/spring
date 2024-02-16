@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function chk() {
+		if (!frm.empno.value) {
+			alert("사번을 입력한 후에 확인하세요");
+			frm.empno.focus();
+			return false;
+		} else
+			location.href = "confirm?empno=" + frm.empno.value;
+
+	}
+</script>
 </head>
 <body>
 	<h2>직원정보 입력</h2>

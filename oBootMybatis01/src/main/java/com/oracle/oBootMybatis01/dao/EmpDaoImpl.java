@@ -131,8 +131,9 @@ public class EmpDaoImpl implements EmpDao {
 	public List<Emp> empSearchList3(Emp emp) {
 		List<Emp> empSearchList3=null;
 		System.out.println("EmpDaoImpl empSearchList3 Start...");
-		System.out.println("EmpDaoImpl empSearch3 emp->"+String.valueOf(emp));
-		try {									//Map id		//parameter
+		System.out.println("EmpDaoImpl empSearch3 emp->"+emp);
+		try {	//  keyword검색
+			//  Naming Rule  				//Map id		//parameter
 			empSearchList3=session.selectList("tkEmpSearchList3",emp);
 			
 		} catch (Exception e) {
@@ -152,6 +153,20 @@ public class EmpDaoImpl implements EmpDao {
 			System.out.println("EmpDaoImpl delete Exception->"+e.getMessage());
 		}
 		return empDept;
+	}
+
+	@Override
+	public String deptName(int deptno) {
+		System.out.println("EmpDaoImpl deptName start..");
+		String resultStr="";
+		try {
+			System.out.println("EmpDaoImpl deptName start..");
+			resultStr=session.selectOne("tkDeptName",deptno);
+			System.out.println("EmpDaoImpl deptName resultStr->"+resultStr);
+		} catch (Exception e) {
+			System.out.println("EmpDaoImpl deptName Exception->"+e.getMessage());
+		}
+		return resultStr;
 	}
 
 }

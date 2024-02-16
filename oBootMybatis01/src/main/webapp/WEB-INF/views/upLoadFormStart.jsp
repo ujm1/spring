@@ -9,7 +9,7 @@
 <body>
  
     UpLoad Image : <img alt="UpLoad Image" src="${pageContext.request.contextPath}/upload/${savedName}">
-	
+											<!-- 이미지 등 고용량 : 반드시 포스트, 여기선 mulipart 사용 -->
      <form id="form1" action="uploadForm" method="post" enctype="multipart/form-data" >
 		<input type="file" name="file1"> <p>
 		<input type="text" name="title"> <p>

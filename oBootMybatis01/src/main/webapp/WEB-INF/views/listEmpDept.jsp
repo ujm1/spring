@@ -10,6 +10,7 @@
 <body>
    <h2>회원 부서정보</h2>
    <a href="mailTransport">Mail Test(SMTP)</a>
+   <!-- 누를시 즉시 전송 -->
 
 	<table>
 		<tr><th>사번</th><th>이름</th><th>업무</th><th>부서</th><th>근무지</th></tr>

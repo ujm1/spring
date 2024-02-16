@@ -3,13 +3,13 @@
 <!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function chk() {
-/* 		if (!frm.empno.value) {
+/* 	function chk() {
+ 		if (!frm.empno.value) {
 			alert("사번을 입력한 후에 확인하세요");
 			frm.empno.focus();
 			return false;
-		} else location.href="confirm.do?empno="+frm.empno.value; */
-	}
+		} else location.href="confirm.do?empno="+frm.empno.value; 
+	} */
 </script>
 </head>
 <body>

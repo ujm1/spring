@@ -1,8 +1,8 @@
 package com.oracle.oBootMybatis01.controller;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,8 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oracle.oBootMybatis01.model.Dept;
 import com.oracle.oBootMybatis01.model.DeptVO;
@@ -28,6 +30,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -213,8 +216,8 @@ public class EmpController {
 
 	@RequestMapping(value = "listSearch3")
 	public String listSearch3(Emp emp, Model model) {
-		// Emp 전체 Count 25
-		int totalEmp = es.condTotalEmp(emp); // 이상한 값 전달됨
+	
+		int totalEmp = es.condTotalEmp(emp); // Emp면 14명
 		System.out.println("EmpController listSearch3 totalEmp->" + totalEmp);
 		// paging 작업
 		Paging page = new Paging(totalEmp, emp.getCurrentPage());
@@ -244,7 +247,7 @@ public class EmpController {
 	@RequestMapping(value = "mailTransport")
 	public String mailTransport(HttpServletRequest request, Model model) {
 		System.out.println("mailSending..");
-		String tomail = "cool3797@gmail.com"; // 받는사람 이메일
+		String tomail = "ujm1jaman@gmail.com"; // 받는사람 이메일
 		System.out.println(tomail);
 		String setfrom = "woakswoaks@gmail.com"; // 보내는사람 이메일
 		String title = "mailTransport입니다"; // 제목
@@ -275,7 +278,8 @@ public class EmpController {
 		return "writeDept3"; // writeDept3.jsp로 이동
 
 	}
-
+	
+	//프로시저 입력
 	@PostMapping(value = "writeDept")
 	public String writeDept(DeptVO deptVO, Model model) {
 		es.insertDept(deptVO);
@@ -292,13 +296,14 @@ public class EmpController {
 		return "writeDept3";
 	}
 
+	// 커서-맵적용
 	@GetMapping(value = "writeDeptCursor")
 	public String writeDeptCursor(Model model) {
-		System.out.println("EmpController");
+		System.out.println("EmpController writeDeptCursor start..");
 		// 부서범위 조회
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("sDeptno", 10);
-		map.put("eDeptno", 55);
+		map.put("sDeptno", 30);
+		map.put("eDeptno", 54);
 		//이렇게 Map으로 넘기는 방법은, 내맘대로 쓸수 있고
 		//dto로 넘기는 방법은, 팀원끼리 합의해서 세팅해놔야 사용
 		es.selListDept(map);
@@ -306,10 +311,10 @@ public class EmpController {
 		List<Dept> deptLists = (List<Dept>) map.get("dept");
 		//맵 안에 dept라는 버퍼가 들어가고, 그걸 리스트로
 		/*다시 말해, 
-		30 ㅇ ㅇ 
-		40 ㅇ ㅇ
-		52 ㅇ ㅇ
-		53 ㅇ ㅇ 
+		//        30	SALES30	CHICAGO30
+//        40	OPERATIONS	BOSTON
+//        52	구매2	홍대2
+//        53	인사팀	이대
 		이렇게 4개의 행이 여기에 들어가는 것
 		*/
 		
@@ -331,7 +336,8 @@ public class EmpController {
 	} 
 	
 	@RequestMapping(value = "interCeptor")
-	public String interCeptor(Member1 member1, Model model) {
+	//public String interCeptor(Member1 member, Model model) {
+	public void interCeptor(Member1 member1, Model model) {
 		System.out.println("EmpController interCeptor Test Start");
 		System.out.println("EmpController interCeptor id->"+member1.getId());
 		//존재:1 비존재:0
@@ -341,7 +347,8 @@ public class EmpController {
 		model.addAttribute("id",member1.getId());
 		model.addAttribute("memCnt",memCnt);
 		System.out.println("interCeptor Test End");
-		return "interCeptor"; //user 존재하면 user 이용 조회 page
+	//	return "interCeptor"; //user 존재하면 user 이용 조회 page
+		return;
 	}
 	
 	//sampleInterceptor 내용 받아 처리
@@ -365,6 +372,71 @@ public class EmpController {
 		model.addAttribute("listMem",listMem);
 		return "doMemberList";
 	}
+	
+	//ajaxForm Test 입력화면
+	@RequestMapping(value = "ajaxForm")
+	public String ajaxForm(Model model) {
+		System.out.println("ajaxForm Star..");
+		return "ajaxForm";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getDeptName")
+	public String getDeptName(Dept dept, Model model) {
+		System.out.println("deptno"+dept.getDeptno());
+		String deptName=es.deptName(dept.getDeptno());
+		System.out.println("deptName->"+deptName);
+		return deptName;
+	}
+	
+	//ajax List Test
+	@RequestMapping(value = "listEmpAjaxForm")
+	public String listEmpAjaxForm(Model model) {
+		Emp emp=new Emp();
+		System.out.println("Ajax List Test STart..");
+		//parameter emp-> page만 추가 Setting
+		emp.setStart(1); //시작시 1
+		emp.setEnd(10); //끝 10
+		
+		List<Emp> listEmp=es.listEmp(emp);
+		System.out.println("EmpController listEmpAjax listEmp.size()->"+listEmp);
+		model.addAttribute("result","kkk");
+		model.addAttribute("listEmp",listEmp);
+		return "listEmpAjaxForm";
+	}
+	
+	@ResponseBody //ajax니까 이거 넣어야됨. 안그러면 404 에러
+	@RequestMapping(value = "empSerializeWrite")
+	public Map<String, Object> empSerializeWrite(@RequestBody @Valid Emp emp) {
+		//맵에 하나하나 Emp 담아다가 객체로, 한꺼번에, 전달하기 위한 목적
+		System.out.println("EmpController Start..");
+		System.out.println("EmpController emp->"+emp);
+		int writeResult=1;
+		
+		//int writeResult=kkk.writeEMp(emp);
+		//String followingProStr=Integer.toString(followingPro);
+		Map<String, Object> resultMap=new HashMap<String, Object>();
+		System.out.println("EmpController empSerializeWrite writeResult->"+writeResult);
+		
+		resultMap.put("writeResult", writeResult); //객체로 넣음
+		return resultMap; //객체를 넘겨줌
+	}
+
+	//listEmpAjaxForm2에서 리스트로 띄워주기 위함
+	@RequestMapping(value = "listEmpAjaxForm2")
+	public String listEmpAjaxForm2(Model model) {
+		System.out.println("listEmpAjaxForm2 Start..");
+		Emp emp=new Emp();
+		System.out.println("Ajax List Test Start...");
+		//parameter emp-> page만 추가 setting
+		emp.setStart(1);
+		emp.setEnd(15);
+		List<Emp> listEmp=es.listEmp(emp);
+		model.addAttribute("listEmp",listEmp); //여기서 만든 listEmp를 "listEmp"로 해서 뒤에서 쓸 예정
+		return "listEmpAjaxForm2";
+	}
+	
+	
 	
 
 }

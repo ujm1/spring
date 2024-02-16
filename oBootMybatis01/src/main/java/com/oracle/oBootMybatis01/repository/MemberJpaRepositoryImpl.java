@@ -26,7 +26,7 @@ public class MemberJpaRepositoryImpl implements MemberJpaRepository {
 	@Override
 	public List<Member> findAll() {
 		System.out.println("MemberJpaRepositoryImpl findAll start...");
-		List<Member> memberList = em.createQuery("select m mfrom Member m", Member.class)
+		List<Member> memberList = em.createQuery("select m from Member m", Member.class)
 				.getResultList();
 		return memberList;
 	}
