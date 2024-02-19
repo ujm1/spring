@@ -85,12 +85,5 @@ public class JpaMemberRepository implements MemberRepository {
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

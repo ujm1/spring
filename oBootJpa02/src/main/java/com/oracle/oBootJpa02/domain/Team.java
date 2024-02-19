@@ -11,8 +11,8 @@ import lombok.Data;
 @Entity
 @Data
 @SequenceGenerator(
-		name           = "team_seq_gen",//객체시퀀스
-		sequenceName   = "team_seq_generator", //DB시퀀스
+		name           = "team_seq_gen", //객체 시퀀스
+		sequenceName   = "team_seq_generator", //db 시퀀스
 		initialValue   = 1,
 		allocationSize = 1
 		)

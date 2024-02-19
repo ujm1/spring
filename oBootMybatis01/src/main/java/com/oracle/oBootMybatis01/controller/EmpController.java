@@ -31,7 +31,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -216,7 +215,7 @@ public class EmpController {
 
 	@RequestMapping(value = "listSearch3")
 	public String listSearch3(Emp emp, Model model) {
-	
+
 		int totalEmp = es.condTotalEmp(emp); // Emp면 14명
 		System.out.println("EmpController listSearch3 totalEmp->" + totalEmp);
 		// paging 작업
@@ -278,8 +277,8 @@ public class EmpController {
 		return "writeDept3"; // writeDept3.jsp로 이동
 
 	}
-	
-	//프로시저 입력
+
+	// 프로시저 입력
 	@PostMapping(value = "writeDept")
 	public String writeDept(DeptVO deptVO, Model model) {
 		es.insertDept(deptVO);
@@ -304,20 +303,17 @@ public class EmpController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("sDeptno", 30);
 		map.put("eDeptno", 54);
-		//이렇게 Map으로 넘기는 방법은, 내맘대로 쓸수 있고
-		//dto로 넘기는 방법은, 팀원끼리 합의해서 세팅해놔야 사용
+		// 이렇게 Map으로 넘기는 방법은, 내맘대로 쓸수 있고
+		// dto로 넘기는 방법은, 팀원끼리 합의해서 세팅해놔야 사용
 		es.selListDept(map);
-		
+
 		List<Dept> deptLists = (List<Dept>) map.get("dept");
-		//맵 안에 dept라는 버퍼가 들어가고, 그걸 리스트로
-		/*다시 말해, 
-		//        30	SALES30	CHICAGO30
-//        40	OPERATIONS	BOSTON
-//        52	구매2	홍대2
-//        53	인사팀	이대
-		이렇게 4개의 행이 여기에 들어가는 것
-		*/
-		
+		// 맵 안에 dept라는 버퍼가 들어가고, 그걸 리스트로
+		/*
+		 * 다시 말해, // 30 SALES30 CHICAGO30 // 40 OPERATIONS BOSTON // 52 구매2 홍대2 // 53
+		 * 인사팀 이대 이렇게 4개의 행이 여기에 들어가는 것
+		 */
+
 		for (Dept dept : deptLists) {
 			System.out.println("dept.getDname->" + dept.getDname());
 			System.out.println("dept.getLoc->" + dept.getLoc());
@@ -327,116 +323,156 @@ public class EmpController {
 		return "writeDeptCursor";
 
 	}
-	
-	//interCeptor 시작화면
+
+	// interCeptor 시작화면
 	@RequestMapping(value = "interCeptorForm")
 	public String interCeptorForm(Model model) {
 		System.out.println("interCeptorForm Start");
 		return "interCeptorForm";
-	} 
-	
+	}
+
 	@RequestMapping(value = "interCeptor")
-	//public String interCeptor(Member1 member, Model model) {
+	// public String interCeptor(Member1 member, Model model) {
 	public void interCeptor(Member1 member1, Model model) {
 		System.out.println("EmpController interCeptor Test Start");
-		System.out.println("EmpController interCeptor id->"+member1.getId());
-		//존재:1 비존재:0
-		int memCnt=es.memCount(member1.getId());
-		
-		System.out.println("EmpController interCeptor memCnt->"+memCnt);
-		model.addAttribute("id",member1.getId());
-		model.addAttribute("memCnt",memCnt);
+		System.out.println("EmpController interCeptor id->" + member1.getId());
+		// 존재:1 비존재:0
+		int memCnt = es.memCount(member1.getId());
+
+		System.out.println("EmpController interCeptor memCnt->" + memCnt);
+		model.addAttribute("id", member1.getId());
+		model.addAttribute("memCnt", memCnt);
 		System.out.println("interCeptor Test End");
-	//	return "interCeptor"; //user 존재하면 user 이용 조회 page
+		// return "interCeptor"; //user 존재하면 user 이용 조회 page
 		return;
 	}
-	
-	//sampleInterceptor 내용 받아 처리
-	@RequestMapping(value = "doMemberWrite", method=RequestMethod.GET)
+
+	// sampleInterceptor 내용 받아 처리
+	@RequestMapping(value = "doMemberWrite", method = RequestMethod.GET)
 	public String doMemberWrite(Model model, HttpServletRequest request) {
-		String ID=(String) request.getSession().getAttribute("ID");
+		String ID = (String) request.getSession().getAttribute("ID");
 		System.out.println("doMemberWrite부터 하세요");
-		model.addAttribute("id",ID);
+		model.addAttribute("id", ID);
 		return "doMemberWrite";
 	}
-	
-	//interCeptor 진행 Test
+
+	// interCeptor 진행 Test
 	@RequestMapping(value = "doMemberList")
 	public String doMemberList(Model model, HttpServletRequest request) {
-		String ID=(String) request.getSession().getAttribute("ID");
-		System.out.println("doMemberList Test Start Id->"+ID);
-		Member1 member1=null;
-		//Member List Get Service
-		List<Member1> listMem=es.listMem(member1);
-		model.addAttribute("ID",ID);
-		model.addAttribute("listMem",listMem);
+		String ID = (String) request.getSession().getAttribute("ID");
+		System.out.println("doMemberList Test Start Id->" + ID);
+		Member1 member1 = null;
+		// Member List Get Service
+		List<Member1> listMem = es.listMem(member1);
+		model.addAttribute("ID", ID);
+		model.addAttribute("listMem", listMem);
 		return "doMemberList";
 	}
-	
-	//ajaxForm Test 입력화면
+
+	// ajaxForm Test 입력화면
 	@RequestMapping(value = "ajaxForm")
 	public String ajaxForm(Model model) {
 		System.out.println("ajaxForm Star..");
 		return "ajaxForm";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = "getDeptName")
 	public String getDeptName(Dept dept, Model model) {
-		System.out.println("deptno"+dept.getDeptno());
-		String deptName=es.deptName(dept.getDeptno());
-		System.out.println("deptName->"+deptName);
+		System.out.println("deptno" + dept.getDeptno());
+		String deptName = es.deptName(dept.getDeptno());
+		System.out.println("deptName->" + deptName);
 		return deptName;
 	}
-	
-	//ajax List Test
+
+	// ajax List Test
 	@RequestMapping(value = "listEmpAjaxForm")
 	public String listEmpAjaxForm(Model model) {
-		Emp emp=new Emp();
+		Emp emp = new Emp();
 		System.out.println("Ajax List Test STart..");
-		//parameter emp-> page만 추가 Setting
-		emp.setStart(1); //시작시 1
-		emp.setEnd(10); //끝 10
-		
-		List<Emp> listEmp=es.listEmp(emp);
-		System.out.println("EmpController listEmpAjax listEmp.size()->"+listEmp);
-		model.addAttribute("result","kkk");
-		model.addAttribute("listEmp",listEmp);
+		// parameter emp-> page만 추가 Setting
+		emp.setStart(1); // 시작시 1
+		emp.setEnd(10); // 끝 10
+
+		List<Emp> listEmp = es.listEmp(emp);
+		System.out.println("EmpController listEmpAjax listEmp.size()->" + listEmp);
+		model.addAttribute("result", "kkk");
+		model.addAttribute("listEmp", listEmp);
 		return "listEmpAjaxForm";
 	}
-	
-	@ResponseBody //ajax니까 이거 넣어야됨. 안그러면 404 에러
+
+	@ResponseBody // ajax니까 이거 넣어야됨. 안그러면 404 에러
 	@RequestMapping(value = "empSerializeWrite")
 	public Map<String, Object> empSerializeWrite(@RequestBody @Valid Emp emp) {
-		//맵에 하나하나 Emp 담아다가 객체로, 한꺼번에, 전달하기 위한 목적
+		// 맵에 하나하나 Emp 담아다가 객체로, 한꺼번에, 전달하기 위한 목적
 		System.out.println("EmpController Start..");
-		System.out.println("EmpController emp->"+emp);
-		int writeResult=1;
-		
-		//int writeResult=kkk.writeEMp(emp);
-		//String followingProStr=Integer.toString(followingPro);
-		Map<String, Object> resultMap=new HashMap<String, Object>();
-		System.out.println("EmpController empSerializeWrite writeResult->"+writeResult);
-		
-		resultMap.put("writeResult", writeResult); //객체로 넣음
-		return resultMap; //객체를 넘겨줌
+		System.out.println("EmpController emp->" + emp);
+		int writeResult = 1;
+
+		// int writeResult=kkk.writeEMp(emp);
+		// String followingProStr=Integer.toString(followingPro);
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		System.out.println("EmpController empSerializeWrite writeResult->" + writeResult);
+
+		resultMap.put("writeResult", writeResult); // 객체로 넣음
+		return resultMap; // 객체를 넘겨줌
 	}
 
-	//listEmpAjaxForm2에서 리스트로 띄워주기 위함
+	// listEmpAjaxForm2에서 리스트로 띄워주기 위함
 	@RequestMapping(value = "listEmpAjaxForm2")
 	public String listEmpAjaxForm2(Model model) {
 		System.out.println("listEmpAjaxForm2 Start..");
-		Emp emp=new Emp();
-		System.out.println("Ajax List Test Start...");
-		//parameter emp-> page만 추가 setting
-		emp.setStart(1);
-		emp.setEnd(15);
-		List<Emp> listEmp=es.listEmp(emp);
-		model.addAttribute("listEmp",listEmp); //여기서 만든 listEmp를 "listEmp"로 해서 뒤에서 쓸 예정
+		Emp emp = new Emp();
+		System.out.println("Ajax  List Test Start");
+		// Parameter emp --> Page만 추가 Setting
+		emp.setStart(1); // 시작시 1
+		emp.setEnd(15); // 시작시 15
+		List<Emp> listEmp = es.listEmp(emp);
+		model.addAttribute("listEmp", listEmp); // 여기서 만든 listEmp를 "listEmp"로 해서 뒤에서 쓸 예정
 		return "listEmpAjaxForm2";
 	}
-	
-	
-	
+
+	@RequestMapping(value = "listEmpAjaxForm3")
+	public String listEmpAjaxForm3(Model model) {
+		System.out.println("listEmpAjaxForm3 Start..");
+		Emp emp = new Emp();
+		// Parameter emp --> Page만 추가 Setting
+		emp.setStart(1); // 시작시 1
+		emp.setEnd(15); // 시작시 15
+		List<Emp> listEmp = es.listEmp(emp);
+		model.addAttribute("listEmp", listEmp);
+		return "listEmpAjaxForm3";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "empListUpdate")
+	public Map<String, Object> empListUpdate(@RequestBody @Valid List<Emp> listEmp) {
+		System.out.println("EmpController empListUpdate Start...");
+		int updateResult = 1;
+
+		for (Emp emp : listEmp) {
+			System.out.println("EmpController empListUpdate emp->" + emp);
+		}
+		// int writeResult = kkk.lisrUpdateEmp(emp);
+		// String followingProStr = Integer.toString(followingPro);
+
+		System.out.println("EmpController empListUpdate writeResult -> " + updateResult);
+		Map<String, Object> resultMap = new HashMap<>();
+		resultMap.put("updateResult", updateResult);
+		return resultMap;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "transactionInsertUpdate")
+	public String transactionInsertUpdate(Emp emp, Model model) {
+		System.out.println("EmpController transactionInsertUpdate Start...");
+		// member Insert 성공 과 실패
+		int returnMember = es.transactionInsertUpdate();
+		System.out.println("EmpController transactionInsertUpdate returnMember=>" + returnMember);
+		String returnMemberString = String.valueOf(returnMember);
+
+		return returnMemberString;
+
+	}
 
 }

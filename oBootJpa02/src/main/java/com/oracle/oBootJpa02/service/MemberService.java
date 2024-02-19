@@ -35,22 +35,22 @@ public class MemberService {
 	public List<Member> getListSearchMember(String searchName) {
 		System.out.println("MemberService getListSearchMember Start...");
 		// String pSearchName = searchName + '%';
-		System.out.println("MemberService getListSearchMember searchName->" + searchName);
-		List<Member> listMember = memberRepository.findByNames(searchName);
-		System.out.println("MemberService getListSearchMember listMember.size()->" + listMember.size());
+		System.out.println("MemberService getListSearchMember searchName->"+searchName);
+		List<Member> listMember  = memberRepository.findByNames(searchName);
+		System.out.println("MemberService getListSearchMember listMember.size()->"+listMember.size());
 		return listMember;
 	}
 
 	public Optional<Member> findByMember(Long id) {
 		Optional<Member> member = memberRepository.findByMember(id);
-		System.out.println("MemberService findByMember member->" + member);
+		System.out.println("MemberService findByMember member->"+member);
 		return member;
 	}
 
 	public void memberUpdate(Member member) {
-		System.out.println("MemberService Repository Call Before member->" + member);
+		System.out.println("MemberService Repository Call Before member->"+member);
 		memberRepository.updateByMember(member);
-		System.out.println("MemberService Return Before->" + member);
+		System.out.println("MemberService Return Before->"+member);
 		return;
 	}
 

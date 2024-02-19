@@ -166,4 +166,20 @@ public class EmpServiceImpl implements EmpService {
 		System.out.println("EmpServiceImpl deptName Start..");
 		return ed.deptName(deptno);
 	}
+
+
+	@Override
+	public int transactionInsertUpdate() {
+		System.out.println("EmpServiceImpl transactionInsertUpdate Start..");
+		//트랜잭션 안하는 경우
+		return md.transactionInsertUpdate(); 
+	}
+
+
+	@Override
+	public int transactionInsertUpdate3() {
+		System.out.println("EmpServiceImpl transactionInsertUpdate3 Start..");
+		//트랜잭션 안하는 경우
+		return md.transactionInsertUpdate3(); 
+	}
 }

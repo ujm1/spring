@@ -8,5 +8,9 @@
 	<select id="listMember1" parameterType="Member1" resultType="Member1">
 		SELECT * FROM member1
 	</select>
+	
+	<select id="insertMember1" parameterType="Member1">
+		Insert into Member1(id, password, name) values(#{id},#{password}, #{name, jdbcType=VARCHAR})
+	</select>
 
 </mapper>

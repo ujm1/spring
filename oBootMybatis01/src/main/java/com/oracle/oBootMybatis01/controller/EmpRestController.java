@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oracle.oBootMybatis01.model.Dept;
+import com.oracle.oBootMybatis01.model.Emp;
 import com.oracle.oBootMybatis01.model.SampleVO;
 import com.oracle.oBootMybatis01.service.EmpService;
 
@@ -40,5 +41,14 @@ public class EmpRestController {
 		System.out.println("@RestController sendVO3 start..");
 		List<Dept> deptList=es.deptSelect();
 		return deptList;
+	}
+	
+	@RequestMapping("/empnoDelete")
+	public String  empnoDelete(Emp emp) {
+		System.out.println("@RestController empnoDelete  START");
+		System.out.println("@RestController empnoDelete emp.getEname()->" + emp.getEname());
+		int    delStatus = es.deleteEmp(emp.getEmpno());
+		String delStatusStr = Integer.toString(delStatus);
+		return delStatusStr;
 	}
 }

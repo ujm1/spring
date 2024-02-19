@@ -21,15 +21,15 @@ import com.oracle.oBootJpa02.service.MemberService;
 @Transactional
 public class MemberServiceTest {
 	@Autowired
-	MemberService memberService;
+	MemberService    memberService;
 	@Autowired
 	MemberRepository memberRepository;
-
+	
 	@BeforeEach
 	public void before1() {
 		System.out.println("Test @BeforeEach ...");
 	}
-
+	
 	@Test
 	@Rollback(value = false)
 	public void memberSave() {
@@ -37,29 +37,29 @@ public class MemberServiceTest {
 		Member member = new Member();
 		member.setTeamname("고구려3");
 		member.setName("개소문");
-
+		
 		// 2. 행위
 		Member member3 = memberService.join(member);
-
+		
 		// 3. 결과
-		System.out.println("MemberServiceTest memberSave member.getId()->" + member.getId());
-		System.out.println("MemberServiceTest memberSave member3.getId()->" + member3.getId());
-
+		System.out.println("MemberServiceTest memberSave member.getId()->"+member.getId());
+		System.out.println("MemberServiceTest memberSave member3.getId()->"+member3.getId());
+		
 	}
-
+	
 	@Test
 	public void memberAll() {
 		// 1. 조건
 		// 회원조회 --> 전체조회
-
+		
 		// 2. 행위
 		List<Member> memberList = memberService.getListAllMember();
-
+		
 		// 3. 결과
-		System.out.println("MemberServiceTest memberList.size()->" + memberList.size());
+		System.out.println("MemberServiceTest memberList.size()->"+memberList.size());
 
 	}
-
+	
 	@Test
 	public void memberFind() {
 		// 1. 조건
@@ -67,9 +67,9 @@ public class MemberServiceTest {
 		Long findId = 1L;
 		// 2. 행위
 		Optional<Member> member = memberService.findByMember(findId);
-
+		
 		// 3. 결과
-		System.out.println("MemberServiceTest member->" + member);
+		System.out.println("MemberServiceTest member->"+member);
 
 	}
 }
